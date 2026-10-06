@@ -1,0 +1,95 @@
+steps to create functions
+
+function1( simple code )
+1.Navigate to lambda service
+2.click on function
+3.click on create function
+4.choose author from scratch 
+5.give function a name 
+6.choose run time
+-->python
+7.click on create function
+In function 
+   -->In code section-->source code-->click on tests(to execute code)
+-->configure test event -->click on create test event -->give event name -->click on save 
+
+note :
+-->if any modification is done to the code ,you need to update it by clickig on the display.
+
+function2 (step instance)
+1.navigate to lamda service
+2.click on function
+3.click on create function
+4.choose author from scratch
+5.give function name
+6.choose run-time
+  -->python
+7.click on create function
+
+In code section
+ -->you need to copy and paste the stop instance script(script1) in lambda function.py
+-->modify by mentioning region code and instance id 
+-->click on deploy
+-->click on test(even)
+    -->error(unauthorized)
+-->attach IAM ti the lambda function
+   IAM
+
+lambada ---------->ec2
+(node)            (pp)
+
+steps to create IAM roles and pp and also steps to attach it 
+-->Go to IAM services
+-->Create Role for lambda 
+-->create pp and ec2
+
+--> Actions allowed 
+       -->stopInstances
+-->resources 
+      -->All or specific by choosing specific instance.
+
+steps to attach IAM role role to lambda Function
+1:Go to created function
+2.click on configure 
+     -->genral configuration
+         -->click on edit 
+         -->keep everything as it is 
+         -->set timeout if required
+         -->In execution role 
+               -->choose use an exsisting role
+         -->In existing role 
+               -->select created role
+         -->click on save
+    Now test the code..
+
+Function 3. Start Instance 
+ -->Copy and paste start instance script(script 2)
+-->Modify by mentioning region code and instance id
+-->while creating IAM permissions select actions as start instances
+
+Function 4: start_stop_Instances
+It will descibe whether instnces is stoppeed/running state if it is stopped state it will start instance and it it is in running state it will stop instance .
+-->copy and paste third script 
+-->replce with your actual ec2 instance id 
+-->while creating IAM permissions choose actions as 
+a descreInstances
+b.stopInstances
+c.startInstances
+
+function 5: start Instances
+    -->if multiple instances are in stopped state ,lambda function will start those instances
+    -->#Replace with your AWS region eg 'us-east-1'
+    -->while creating IAM permissions choose action as  
+
+       a.DescribeIntances
+       b.StopInstances
+       c.startInsatnces
+function 6 : stopa Instances
+-->If multiple instances are in running state,lambda function will stop those instances
+    -->copy and paste fifth script 
+    -->#Replace it with your AWS region eg us-east-1
+    -->while creating IAM permissions choose actions as 
+            a.DescribeInstances
+            b.stopInstances
+            c.startInstances
+end 
